@@ -12,7 +12,13 @@ const App = () => {
     e.preventDefault()
     const newTodo=[...todo,task]
     setTodo(newTodo)
+    setTask('')
 
+  }
+
+  const deleteHandler= (indexValue)=>{
+    const newTodos=todo.filter((todo,index)=> index !==  indexValue)
+  setTodo(newTodos)
   }
     return (
     <div>
@@ -23,7 +29,7 @@ const App = () => {
           <input type='text'value={task} name='todo' onChange={ChangeHandler}/> &nbsp; &nbsp;
           <input type='submit' value='Add' name='todo'/>
         </form>
-        <TodoList todolist={todo}/>
+        <TodoList todolist={todo} deleteHandler={deleteHandler}/>
           </div>
 
         </div>
