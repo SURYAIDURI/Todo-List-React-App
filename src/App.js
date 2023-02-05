@@ -1,14 +1,17 @@
 import React,{useState} from 'react'
+import TodoList from './TodoList'
+
 
 const App = () => {
   const [task,setTask]=useState('')
-  
+  const [todo,setTodo] = useState([])
   const ChangeHandler=e=>{
     setTask(e.target.value)
   }
   const submitHandler=e=>{
     e.preventDefault()
-    console.log(task)
+    const newTodo=[...todo,task]
+    setTodo(newTodo)
 
   }
     return (
@@ -20,6 +23,7 @@ const App = () => {
           <input type='text'value={task} name='todo' onChange={ChangeHandler}/> &nbsp; &nbsp;
           <input type='submit' value='Add' name='todo'/>
         </form>
+        <TodoList todolist={todo}/>
           </div>
 
         </div>
