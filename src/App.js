@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useState} from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+const App = () => {
+  const [task,setTask]=useState('')
+  
+  const ChangeHandler=e=>{
+    setTask(e.target.value)
+  }
+  const submitHandler=e=>{
+    e.preventDefault()
+    console.log(task)
+
+  }
+    return (
+    <div>
+      <center>
+        <div className='card'>
+          <div className='card-body'>
+          <form onSubmit={submitHandler}>
+          <input type='text'value={task} name='todo' onChange={ChangeHandler}/> &nbsp; &nbsp;
+          <input type='submit' value='Add' name='todo'/>
+        </form>
+          </div>
+
+        </div>
+      </center>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
